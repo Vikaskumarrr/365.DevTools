@@ -8,13 +8,24 @@ function CSVToJSON() {
 
     const convert = () => {
         try {
-            const lines = csv.trim().split('\n');
+            if (!csv.trim()) {
+                toast.error('Please enter CSV data');
+                return;
+            }
+
+            const lines = csv.trim().split('\n').filter(line => line.trim());
             if (lines.length < 2) {
                 toast.error('CSV must have at least a header and one data row');
                 return;
             }
 
             const headers = lines[0].split(',').map(h => h.trim());
+            
+            if (headers.length === 0 || headers.some(h => !h)) {
+                toast.error('Invalid CSV headers');
+                return;
+            }
+
             const result = lines.slice(1).map(line => {
                 const values = line.split(',').map(v => v.trim());
                 return headers.reduce((obj, header, index) => {
@@ -26,7 +37,7 @@ function CSVToJSON() {
             setJSON(JSON.stringify(result, null, 2));
             toast.success('Converted to JSON!');
         } catch (error) {
-            toast.error('Conversion failed');
+            toast.error('Conversion failed: ' + error.message);
         }
     };
 

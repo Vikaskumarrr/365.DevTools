@@ -8,9 +8,25 @@ function JSONToCSV() {
 
     const convert = () => {
         try {
+            if (!json.trim()) {
+                toast.error('Please enter JSON data');
+                return;
+            }
+
             const data = JSON.parse(json);
-            if (!Array.isArray(data) || data.length === 0) {
+            
+            if (!Array.isArray(data)) {
                 toast.error('JSON must be an array of objects');
+                return;
+            }
+
+            if (data.length === 0) {
+                toast.error('JSON array is empty');
+                return;
+            }
+
+            if (typeof data[0] !== 'object' || data[0] === null) {
+                toast.error('JSON array must contain objects');
                 return;
             }
 
@@ -19,8 +35,11 @@ function JSONToCSV() {
 
             data.forEach(obj => {
                 const values = headers.map(header => {
-                    const value = obj[header] || '';
-                    return typeof value === 'string' && value.includes(',') ? `"${value}"` : value;
+                    const value = obj[header] !== undefined && obj[header] !== null ? obj[header] : '';
+                    const stringValue = String(value);
+                    return stringValue.includes(',') || stringValue.includes('"') || stringValue.includes('\n') 
+                        ? `"${stringValue.replace(/"/g, '""')}"` 
+                        : stringValue;
                 });
                 csvRows.push(values.join(','));
             });
@@ -28,7 +47,7 @@ function JSONToCSV() {
             setCSV(csvRows.join('\n'));
             toast.success('Converted to CSV!');
         } catch (error) {
-            toast.error('Invalid JSON');
+            toast.error('Invalid JSON: ' + error.message);
         }
     };
 

@@ -10,11 +10,26 @@ function ImageToBase64() {
         const file = e.target.files[0];
         if (!file) return;
 
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+            toast.error('Please upload a valid image file');
+            return;
+        }
+
+        // Validate file size (max 10MB)
+        if (file.size > 10 * 1024 * 1024) {
+            toast.error('Image size must be less than 10MB');
+            return;
+        }
+
         const reader = new FileReader();
         reader.onloadend = () => {
             setBase64(reader.result);
             setImageData({ name: file.name, size: file.size, type: file.type });
             toast.success('Image converted to Base64!');
+        };
+        reader.onerror = () => {
+            toast.error('Failed to read image file');
         };
         reader.readAsDataURL(file);
     };

@@ -85,7 +85,7 @@ function ColorConverter() {
 
     const presetColors = [
         '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF',
-        '#000000', '#FFFFFF', '#808080', '#FFA500', '#800080', '#FFC0CB'
+        '#000000', '#FFFFFF', '#808080', '#EF6E76', '#800080', '#FFC0CB'
     ];
 
     return (

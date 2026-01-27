@@ -10,7 +10,34 @@ function TimestampConverter() {
     const currentDate = new Date(timestamp);
 
     const timestampToDate = (ts) => {
-        const date = new Date(Number(ts));
+        const numTs = Number(ts);
+        
+        // Handle invalid timestamps
+        if (isNaN(numTs)) {
+            return {
+                iso: 'Invalid timestamp',
+                utc: 'Invalid timestamp',
+                local: 'Invalid timestamp',
+                date: 'Invalid timestamp',
+                time: 'Invalid timestamp',
+            };
+        }
+
+        // Auto-detect if timestamp is in seconds or milliseconds
+        const timestamp = numTs < 10000000000 ? numTs * 1000 : numTs;
+        const date = new Date(timestamp);
+        
+        // Check if date is valid
+        if (isNaN(date.getTime())) {
+            return {
+                iso: 'Invalid timestamp',
+                utc: 'Invalid timestamp',
+                local: 'Invalid timestamp',
+                date: 'Invalid timestamp',
+                time: 'Invalid timestamp',
+            };
+        }
+
         return {
             iso: date.toISOString(),
             utc: date.toUTCString(),
