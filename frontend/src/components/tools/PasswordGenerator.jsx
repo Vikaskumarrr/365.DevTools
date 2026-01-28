@@ -56,109 +56,162 @@ function PasswordGenerator() {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
-            <div className="mb-8">
-                <h1 className="text-4xl font-bold mb-2">Password Generator</h1>
+            <header className="mb-8">
+                <h1 className="text-4xl font-bold mb-2 text-gray-900 dark:text-white">
+                    Password Generator
+                </h1>
                 <p className="text-gray-600 dark:text-gray-400">
                     Create secure, random passwords instantly
                 </p>
-            </div>
+            </header>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
                 {/* Password Display */}
-                <div className="mb-6">
+                <section className="mb-6" aria-labelledby="password-display-heading">
+                    <h2 id="password-display-heading" className="sr-only">Generated Password</h2>
                     <div className="relative">
+                        <label htmlFor="generated-password" className="sr-only">
+                            Your generated password
+                        </label>
                         <input
+                            id="generated-password"
                             type="text"
                             value={password}
                             readOnly
                             placeholder="Your password will appear here"
                             className="input-field pr-20 font-mono text-lg"
+                            aria-live="polite"
+                            aria-atomic="true"
                         />
                         <button
                             onClick={copyToClipboard}
                             disabled={!password}
-                            className="absolute right-2 top-1/2 -translate-y-1/2 text-primary-500 hover:text-primary-600 disabled:opacity-50"
+                            className="absolute right-2 top-1/2 -translate-y-1/2 text-primary-500 hover:text-primary-600 disabled:opacity-50 disabled:cursor-not-allowed p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                            aria-label="Copy password to clipboard"
+                            title="Copy to clipboard"
                         >
-                            <FiCopy size={24} />
+                            <FiCopy size={24} aria-hidden="true" />
                         </button>
                     </div>
 
                     {/* Strength Indicator */}
                     {password && (
-                        <div className="mt-4">
+                        <div className="mt-4" role="status" aria-live="polite">
                             <div className="flex justify-between mb-2">
-                                <span className="text-sm font-medium">Password Strength</span>
-                                <span className="text-sm font-medium">{strength.text}</span>
+                                <span className="text-sm font-medium text-gray-900 dark:text-white">Password Strength</span>
+                                <span className="text-sm font-medium text-gray-900 dark:text-white">{strength.text}</span>
                             </div>
-                            <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                            <div 
+                                className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden"
+                                role="progressbar"
+                                aria-valuenow={strength.width === '100%' ? 100 : strength.width === '66%' ? 66 : 33}
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-label={`Password strength: ${strength.text}`}
+                            >
                                 <div
                                     className={`h-full ${strength.color} transition-all duration-300`}
                                     style={{ width: strength.width }}
                                 />
                             </div>
+                            <div className="sr-only">
+                                Password strength is {strength.text}
+                            </div>
                         </div>
                     )}
-                </div>
+                </section>
 
                 {/* Length Slider */}
-                <div className="mb-6">
+                <section className="mb-6" aria-labelledby="length-heading">
                     <div className="flex justify-between mb-2">
-                        <label className="font-medium">Password Length</label>
-                        <span className="text-primary-500 font-bold">{length}</span>
+                        <label htmlFor="password-length" id="length-heading" className="font-medium text-gray-900 dark:text-white">
+                            Password Length
+                        </label>
+                        <span className="text-primary-500 font-bold" aria-live="polite">{length}</span>
                     </div>
                     <input
+                        id="password-length"
                         type="range"
                         min="4"
                         max="64"
                         value={length}
                         onChange={(e) => setLength(Number(e.target.value))}
                         className="w-full"
+                        aria-valuemin="4"
+                        aria-valuemax="64"
+                        aria-valuenow={length}
+                        aria-label={`Password length: ${length} characters`}
                     />
-                </div>
+                    <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+                        <span>4</span>
+                        <span>64</span>
+                    </div>
+                </section>
 
                 {/* Options */}
-                <div className="space-y-3 mb-6">
-                    <label className="flex items-center space-x-3 cursor-pointer">
-                        <input
-                            type="checkbox"
-                            checked={options.uppercase}
-                            onChange={(e) => setOptions({ ...options, uppercase: e.target.checked })}
-                            className="w-5 h-5"
-                        />
-                        <span>Uppercase Letters (A-Z)</span>
-                    </label>
-                    <label className="flex items-center space-x-3 cursor-pointer">
-                        <input
-                            type="checkbox"
-                            checked={options.lowercase}
-                            onChange={(e) => setOptions({ ...options, lowercase: e.target.checked })}
-                            className="w-5 h-5"
-                        />
-                        <span>Lowercase Letters (a-z)</span>
-                    </label>
-                    <label className="flex items-center space-x-3 cursor-pointer">
-                        <input
-                            type="checkbox"
-                            checked={options.numbers}
-                            onChange={(e) => setOptions({ ...options, numbers: e.target.checked })}
-                            className="w-5 h-5"
-                        />
-                        <span>Numbers (0-9)</span>
-                    </label>
-                    <label className="flex items-center space-x-3 cursor-pointer">
-                        <input
-                            type="checkbox"
-                            checked={options.symbols}
-                            onChange={(e) => setOptions({ ...options, symbols: e.target.checked })}
-                            className="w-5 h-5"
-                        />
-                        <span>Symbols (!@#$%^&*)</span>
-                    </label>
-                </div>
+                <fieldset className="space-y-3 mb-6">
+                    <legend className="font-medium text-gray-900 dark:text-white mb-3">
+                        Character Types
+                    </legend>
+                    <div className="space-y-3">
+                        <label className="flex items-center space-x-3 cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                checked={options.uppercase}
+                                onChange={(e) => setOptions({ ...options, uppercase: e.target.checked })}
+                                className="w-5 h-5 rounded border-gray-300 text-primary-500 focus:ring-primary-500 focus:ring-2"
+                                aria-describedby="uppercase-desc"
+                            />
+                            <span className="text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors">
+                                Uppercase Letters (A-Z)
+                            </span>
+                        </label>
+                        <label className="flex items-center space-x-3 cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                checked={options.lowercase}
+                                onChange={(e) => setOptions({ ...options, lowercase: e.target.checked })}
+                                className="w-5 h-5 rounded border-gray-300 text-primary-500 focus:ring-primary-500 focus:ring-2"
+                                aria-describedby="lowercase-desc"
+                            />
+                            <span className="text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors">
+                                Lowercase Letters (a-z)
+                            </span>
+                        </label>
+                        <label className="flex items-center space-x-3 cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                checked={options.numbers}
+                                onChange={(e) => setOptions({ ...options, numbers: e.target.checked })}
+                                className="w-5 h-5 rounded border-gray-300 text-primary-500 focus:ring-primary-500 focus:ring-2"
+                                aria-describedby="numbers-desc"
+                            />
+                            <span className="text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors">
+                                Numbers (0-9)
+                            </span>
+                        </label>
+                        <label className="flex items-center space-x-3 cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                checked={options.symbols}
+                                onChange={(e) => setOptions({ ...options, symbols: e.target.checked })}
+                                className="w-5 h-5 rounded border-gray-300 text-primary-500 focus:ring-primary-500 focus:ring-2"
+                                aria-describedby="symbols-desc"
+                            />
+                            <span className="text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors">
+                                Symbols (!@#$%^&*)
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
 
                 {/* Generate Button */}
-                <button onClick={generatePassword} className="btn-primary w-full flex items-center justify-center gap-2">
-                    <FiRefreshCw size={20} />
+                <button 
+                    onClick={generatePassword} 
+                    className="btn-primary w-full flex items-center justify-center gap-2"
+                    aria-label="Generate new password"
+                >
+                    <FiRefreshCw size={20} aria-hidden="true" />
                     Generate Password
                 </button>
             </div>

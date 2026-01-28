@@ -1,0 +1,49 @@
+{
+  "name": "365.DevTools - Developer Utilities",
+  "short_name": "365.DevTools",
+  "description": "Fast, beautiful, and privacy-focused tools for developers. Everything runs in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ef6e76",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["developer tools", "utilities", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "JSON Formatter",
+      "short_name": "JSON",
+      "description": "Format and validate JSON",
+      "url": "/tools/json-formatter",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Base64 Encoder",
+      "short_name": "Base64",
+      "description": "Encode and decode Base64",
+      "url": "/tools/base64-encoder",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Password Generator",
+      "short_name": "Password",
+      "description": "Generate secure passwords",
+      "url": "/tools/password-generator",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    }
+  ]
+}
