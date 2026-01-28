@@ -9,9 +9,11 @@ function Footer() {
                     {/* Brand */}
                     <div>
                         <div className="flex items-center space-x-2 mb-4">
-                            <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-accent-500 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                                3
-                            </div>
+                            <img
+                                src="/logo.png"
+                                alt="365.DevTools Logo"
+                                className="w-10 h-10"
+                            />
                             <span className="text-xl font-bold text-gray-900 dark:text-white">365.DevTools</span>
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 text-sm">

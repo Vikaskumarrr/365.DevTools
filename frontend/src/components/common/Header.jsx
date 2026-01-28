@@ -13,9 +13,11 @@ function Header() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center space-x-2 group">
-                        <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-500 rounded-xl group-hover:scale-110 transition-transform flex items-center justify-center text-white font-bold shadow-lg">
-                            3
-                        </div>
+                        <img
+                            src="/logo.png"
+                            alt="365.DevTools Logo"
+                            className="w-14 h-14 group-hover:scale-110 transition-transform"
+                        />
                         <span className="text-xl font-bold text-gray-900 dark:text-white">
                             365.DevTools
                         </span>
