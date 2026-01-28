@@ -1,0 +1,309 @@
+/* Command Palette Styles */
+
+/* Dialog Overlay */
+[cmdk-dialog] {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10vh 1rem 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    [cmdk-dialog] {
+        animation: none;
+    }
+    
+    .command-container {
+        animation: none !important;
+    }
+}
+
+/* Container */
+.command-container {
+    width: 100%;
+    max-width: 640px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark mode */
+.dark .command-container {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+}
+
+/* Input Wrapper */
+.command-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dark .command-input-wrapper {
+    border-bottom-color: #2a2a2a;
+}
+
+.command-search-icon {
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.dark .command-search-icon {
+    color: #6b7280;
+}
+
+/* Input */
+.command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #111827;
+    font-family: inherit;
+}
+
+.command-input::placeholder {
+    color: #9ca3af;
+}
+
+.dark .command-input {
+    color: #f9fafb;
+}
+
+.dark .command-input::placeholder {
+    color: #6b7280;
+}
+
+/* List */
+.command-list {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px;
+}
+
+/* Scrollbar styling */
+.command-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.command-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.command-list::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+
+.dark .command-list::-webkit-scrollbar-thumb {
+    background: #374151;
+}
+
+.command-list::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+.dark .command-list::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+}
+
+/* Group */
+.command-group {
+    margin-bottom: 8px;
+}
+
+[cmdk-group-heading] {
+    padding: 8px 12px 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dark [cmdk-group-heading] {
+    color: #9ca3af;
+}
+
+/* Item */
+.command-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    outline: none;
+}
+
+.command-item:hover,
+.command-item[aria-selected="true"] {
+    background-color: #f3f4f6;
+}
+
+.dark .command-item:hover,
+.dark .command-item[aria-selected="true"] {
+    background-color: #2a2a2a;
+}
+
+/* Focus indicator for keyboard navigation */
+.command-item:focus-visible {
+    outline: 2px solid #ef6e76;
+    outline-offset: -2px;
+}
+
+.command-item-icon {
+    flex-shrink: 0;
+    color: #6b7280;
+}
+
+.dark .command-item-icon {
+    color: #9ca3af;
+}
+
+.command-item-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 2px;
+}
+
+.dark .command-item-title {
+    color: #f9fafb;
+}
+
+.command-item-description {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.dark .command-item-description {
+    color: #9ca3af;
+}
+
+.command-item-badge {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.command-item-category {
+    font-size: 11px;
+    padding: 2px 8px;
+    background-color: #e5e7eb;
+    color: #6b7280;
+    border-radius: 4px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.dark .command-item-category {
+    background-color: #374151;
+    color: #9ca3af;
+}
+
+/* Empty State */
+.command-empty {
+    padding: 16px;
+}
+
+/* Footer */
+.command-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 12px 20px;
+    border-top: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+}
+
+.dark .command-footer {
+    border-top-color: #2a2a2a;
+    background-color: #0f0f0f;
+}
+
+.command-footer-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.dark .command-footer-hint {
+    color: #9ca3af;
+}
+
+.command-footer-hint kbd {
+    padding: 2px 6px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.dark .command-footer-hint kbd {
+    background-color: #1a1a1a;
+    border-color: #374151;
+    color: #d1d5db;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    [cmdk-dialog] {
+        padding: 0;
+        align-items: flex-end;
+    }
+    
+    .command-container {
+        max-width: 100%;
+        border-radius: 16px 16px 0 0;
+        max-height: 85vh;
+    }
+    
+    .command-list {
+        max-height: calc(85vh - 140px);
+    }
+    
+    .command-footer {
+        display: none;
+    }
+}
