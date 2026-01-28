@@ -1,6 +1,8 @@
 # 365.DevTools 🛠️
 
 A beautiful, privacy-focused collection of 33+ developer tools that run entirely in your browser. Fast, free, and always private.
+<img width="1470" height="787" alt="Screenshot 2026-01-28 at 1 50 56 PM" src="https://github.com/user-attachments/assets/5ae568a8-5de7-42f2-ae75-a51fc64ff5a5" />
+
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![React](https://img.shields.io/badge/React-19-61dafb.svg)
