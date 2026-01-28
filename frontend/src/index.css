@@ -9,6 +9,22 @@
     cursor: none !important;
   }
 
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white;
     font-family: 'Domine', Georgia, 'Times New Roman', Times, serif;
@@ -25,6 +41,44 @@
 
   code {
     font-family: 'Fira Code', 'Courier New', monospace;
+  }
+
+  /* Focus Indicators - WCAG 2.1 AA Compliant */
+  *:focus-visible {
+    outline: 2px solid #ef6e76;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Remove default focus for mouse users, keep for keyboard */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* High contrast focus for buttons and links */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 3px solid #ef6e76;
+    outline-offset: 2px;
+  }
+
+  /* Skip to main content link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #ef6e76;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+  }
+
+  .skip-link:focus {
+    top: 0;
   }
 }
 
