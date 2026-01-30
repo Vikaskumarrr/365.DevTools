@@ -50,6 +50,48 @@ const HexConverter = lazy(() => import('./components/tools/HexConverter'));
 const SlugGenerator = lazy(() => import('./components/tools/SlugGenerator'));
 const BackslashEscape = lazy(() => import('./components/tools/BackslashEscape'));
 
+// New Tools - Developer
+const XMLFormatter = lazy(() => import('./components/tools/XMLFormatter'));
+const YAMLValidator = lazy(() => import('./components/tools/YAMLValidator'));
+const HTMLFormatter = lazy(() => import('./components/tools/HTMLFormatter'));
+const JSONToXML = lazy(() => import('./components/tools/JSONToXML'));
+const XMLToJSON = lazy(() => import('./components/tools/XMLToJSON'));
+const CronExpression = lazy(() => import('./components/tools/CronExpression'));
+const APITester = lazy(() => import('./components/tools/APITester'));
+const JSONDiff = lazy(() => import('./components/tools/JSONDiff'));
+
+// New Tools - Security
+const BcryptGenerator = lazy(() => import('./components/tools/BcryptGenerator'));
+const HMACGenerator = lazy(() => import('./components/tools/HMACGenerator'));
+const RSAKeyGenerator = lazy(() => import('./components/tools/RSAKeyGenerator'));
+
+// New Tools - Design
+const ColorPalette = lazy(() => import('./components/tools/ColorPalette'));
+const ContrastChecker = lazy(() => import('./components/tools/ContrastChecker'));
+const SVGOptimizer = lazy(() => import('./components/tools/SVGOptimizer'));
+const CSSMinifier = lazy(() => import('./components/tools/CSSMinifier'));
+const BoxShadowGenerator = lazy(() => import('./components/tools/BoxShadowGenerator'));
+
+// New Tools - Content
+const HTMLToMarkdown = lazy(() => import('./components/tools/HTMLToMarkdown'));
+const MarkdownToHTML = lazy(() => import('./components/tools/MarkdownToHTML'));
+const TextToSpeech = lazy(() => import('./components/tools/TextToSpeech'));
+const DuplicateRemover = lazy(() => import('./components/tools/DuplicateRemover'));
+
+// New Tools - Converter
+const RomanNumeral = lazy(() => import('./components/tools/RomanNumeral'));
+const TemperatureConverter = lazy(() => import('./components/tools/TemperatureConverter'));
+const CurrencyConverter = lazy(() => import('./components/tools/CurrencyConverter'));
+const NumberBaseConverter = lazy(() => import('./components/tools/NumberBaseConverter'));
+
+// New Tools - Utility
+const BarcodeGenerator = lazy(() => import('./components/tools/BarcodeGenerator'));
+const IPLookup = lazy(() => import('./components/tools/IPLookup'));
+const UserAgentParser = lazy(() => import('./components/tools/UserAgentParser'));
+const MIMETypeLookup = lazy(() => import('./components/tools/MIMETypeLookup'));
+const EmailValidator = lazy(() => import('./components/tools/EmailValidator'));
+const CreditCardValidator = lazy(() => import('./components/tools/CreditCardValidator'));
+
 import './index.css';
 
 function App() {
@@ -228,6 +270,168 @@ function App() {
             <Route path="tools/backslash-escape" element={
               <Suspense fallback={<LoadingSpinner />}>
                 <BackslashEscape />
+              </Suspense>
+            } />
+
+            {/* New Tools - Developer */}
+            <Route path="tools/xml-formatter" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <XMLFormatter />
+              </Suspense>
+            } />
+            <Route path="tools/yaml-validator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <YAMLValidator />
+              </Suspense>
+            } />
+            <Route path="tools/html-formatter" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <HTMLFormatter />
+              </Suspense>
+            } />
+            <Route path="tools/json-to-xml" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <JSONToXML />
+              </Suspense>
+            } />
+            <Route path="tools/xml-to-json" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <XMLToJSON />
+              </Suspense>
+            } />
+            <Route path="tools/cron-expression" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <CronExpression />
+              </Suspense>
+            } />
+            <Route path="tools/api-tester" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <APITester />
+              </Suspense>
+            } />
+            <Route path="tools/json-diff" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <JSONDiff />
+              </Suspense>
+            } />
+
+            {/* New Tools - Security */}
+            <Route path="tools/bcrypt-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <BcryptGenerator />
+              </Suspense>
+            } />
+            <Route path="tools/hmac-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <HMACGenerator />
+              </Suspense>
+            } />
+            <Route path="tools/rsa-key-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <RSAKeyGenerator />
+              </Suspense>
+            } />
+
+            {/* New Tools - Design */}
+            <Route path="tools/color-palette" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <ColorPalette />
+              </Suspense>
+            } />
+            <Route path="tools/contrast-checker" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <ContrastChecker />
+              </Suspense>
+            } />
+            <Route path="tools/svg-optimizer" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <SVGOptimizer />
+              </Suspense>
+            } />
+            <Route path="tools/css-minifier" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <CSSMinifier />
+              </Suspense>
+            } />
+            <Route path="tools/box-shadow-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <BoxShadowGenerator />
+              </Suspense>
+            } />
+
+            {/* New Tools - Content */}
+            <Route path="tools/html-to-markdown" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <HTMLToMarkdown />
+              </Suspense>
+            } />
+            <Route path="tools/markdown-to-html" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <MarkdownToHTML />
+              </Suspense>
+            } />
+            <Route path="tools/text-to-speech" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <TextToSpeech />
+              </Suspense>
+            } />
+            <Route path="tools/duplicate-remover" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <DuplicateRemover />
+              </Suspense>
+            } />
+
+            {/* New Tools - Converter */}
+            <Route path="tools/roman-numeral" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <RomanNumeral />
+              </Suspense>
+            } />
+            <Route path="tools/temperature-converter" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <TemperatureConverter />
+              </Suspense>
+            } />
+            <Route path="tools/currency-converter" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <CurrencyConverter />
+              </Suspense>
+            } />
+            <Route path="tools/number-base-converter" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <NumberBaseConverter />
+              </Suspense>
+            } />
+
+            {/* New Tools - Utility */}
+            <Route path="tools/barcode-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <BarcodeGenerator />
+              </Suspense>
+            } />
+            <Route path="tools/ip-lookup" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <IPLookup />
+              </Suspense>
+            } />
+            <Route path="tools/user-agent-parser" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <UserAgentParser />
+              </Suspense>
+            } />
+            <Route path="tools/mime-type-lookup" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <MIMETypeLookup />
+              </Suspense>
+            } />
+            <Route path="tools/email-validator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <EmailValidator />
+              </Suspense>
+            } />
+            <Route path="tools/credit-card-validator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <CreditCardValidator />
               </Suspense>
             } />
           </Route>
