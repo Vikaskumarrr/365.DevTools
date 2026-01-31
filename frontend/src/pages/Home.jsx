@@ -17,6 +17,7 @@ function Home() {
         // Load recently used tools from localStorage
         const recent = JSON.parse(localStorage.getItem('recentlyUsed') || '[]');
         setRecentlyUsed(recent.slice(0, 6)); // Show max 6
+        //hello
     }, []);
 
     useEffect(() => {

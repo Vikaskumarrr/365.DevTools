@@ -17,7 +17,7 @@ function Footer() {
                             <span className="text-xl font-bold text-gray-900 dark:text-white">365.DevTools</span>
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 text-sm">
-                            33+ free developer tools. Fast, private, and always free.
+                            33+ free developer tools. Fast , private , secure and always free.
                         </p>
                     </div>
 
@@ -29,6 +29,7 @@ function Footer() {
                             <li><Link to="/tools/password-generator" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Password Generator</Link></li>
                             <li><Link to="/tools/qr-generator" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">QR Code Generator</Link></li>
                             <li><Link to="/tools/hash-generator" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Hash Generator</Link></li>
+                            <li><Link to="/tools/Currency Convertor" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Currency Convertor</Link></li>
                         </ul>
                     </div>
 
@@ -40,6 +41,7 @@ function Footer() {
                             <li><Link to="/blog" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Blog</Link></li>
                             <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Privacy Policy</a></li>
                             <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Terms of Service</a></li>
+                            
                         </ul>
                     </div>
 
