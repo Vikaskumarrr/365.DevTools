@@ -41,9 +41,10 @@ function Footer() {
                             <li><Link to="/blog" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Blog</Link></li>
                             <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Privacy Policy</a></li>
                             <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Terms of Service</a></li>
-                            
+                            <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors">Contact Us</a></li>
                         </ul>
                     </div>
+
 
                     {/* Connect */}
                     <div>

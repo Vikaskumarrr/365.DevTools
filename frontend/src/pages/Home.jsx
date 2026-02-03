@@ -73,18 +73,18 @@ function Home() {
                     >
                         <FiZap className="text-primary-600" size={16} />
                         <span className="text-sm font-medium text-primary-700 dark:text-primary-400">
-                            33+ Free Tools • Private • No Signup
+                            33+ Free Tools • Private • Secure • No Signup
                         </span>
                     </motion.div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.5 }}
                     >
                         <BlurText
                             text="Daily Developer Tools"
-                            delay={50}
+                            delay={40}
                             animateBy="words"
                             direction="top"
                             className="text-5xl md:text-7xl font-black mb-3 leading-tight text-gray-900 dark:text-white"
@@ -105,7 +105,7 @@ function Home() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto"
                     >
-                        Fast, beautiful, and privacy-focused tools for developers, designers, and everyone. Everything runs in your browser.
+                        Fast , Beautiful , Secure and Privacy-focused tools for developers, Designers, and everyone. Everything runs in your browser.
                     </motion.p>
 
                     {/* Quick Access Tools */}
