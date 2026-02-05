@@ -7,6 +7,7 @@ export const CATEGORIES = {
     PRODUCTIVITY: 'Productivity',
     UTILITY: 'Utility',
     CONVERTER: 'Converter',
+    AI: 'AI',
 };
 
 export const toolsList = [
@@ -305,6 +306,74 @@ export const toolsList = [
         path: '/tools/pomodoro-timer',
         icon: '⏲️',
     },
+
+    // AI TOOLS
+    {
+        id: 'ai-text-summarizer',
+        name: 'AI Text Summarizer',
+        description: 'Summarize long text using AI',
+        category: CATEGORIES.AI,
+        path: '/tools/ai-text-summarizer',
+        icon: '🤖',
+        popular: true,
+        requiresApiKey: true,
+        aiProvider: 'any',
+    },
+    {
+        id: 'ai-code-explainer',
+        name: 'AI Code Explainer',
+        description: 'Get explanations for code snippets',
+        category: CATEGORIES.AI,
+        path: '/tools/ai-code-explainer',
+        icon: '💡',
+        popular: true,
+        requiresApiKey: true,
+        aiProvider: 'any',
+    },
+    {
+        id: 'ai-regex-generator',
+        name: 'AI Regex Generator',
+        description: 'Generate regex patterns from descriptions',
+        category: CATEGORIES.AI,
+        path: '/tools/ai-regex-generator',
+        icon: '🔍',
+        popular: true,
+        requiresApiKey: true,
+        aiProvider: 'any',
+    },
+    {
+        id: 'ai-json-generator',
+        name: 'AI JSON Generator',
+        description: 'Generate JSON structures from descriptions',
+        category: CATEGORIES.AI,
+        path: '/tools/ai-json-generator',
+        icon: '📋',
+        popular: true,
+        requiresApiKey: true,
+        aiProvider: 'any',
+    },
+    {
+        id: 'ai-sql-generator',
+        name: 'AI SQL Generator',
+        description: 'Generate SQL queries from descriptions',
+        category: CATEGORIES.AI,
+        path: '/tools/ai-sql-generator',
+        icon: '🗃️',
+        popular: true,
+        requiresApiKey: true,
+        aiProvider: 'any',
+    },
+    {
+        id: 'ai-writing-assistant',
+        name: 'AI Writing Assistant',
+        description: 'Improve your technical writing',
+        category: CATEGORIES.AI,
+        path: '/tools/ai-writing-assistant',
+        icon: '✍️',
+        popular: true,
+        requiresApiKey: true,
+        aiProvider: 'any',
+    },
 ];
 
 // Helper functions
@@ -328,4 +397,20 @@ export const searchTools = (query) => {
             tool.name.toLowerCase().includes(lowerQuery) ||
             tool.description.toLowerCase().includes(lowerQuery)
     );
+};
+
+/**
+ * Get all AI tools
+ * @returns {Array} AI tools
+ */
+export const getAITools = () => {
+    return toolsList.filter((tool) => tool.category === CATEGORIES.AI);
+};
+
+/**
+ * Get tools that require API keys
+ * @returns {Array} Tools requiring API keys
+ */
+export const getToolsRequiringApiKey = () => {
+    return toolsList.filter((tool) => tool.requiresApiKey === true);
 };

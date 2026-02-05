@@ -50,6 +50,14 @@ const HexConverter = lazy(() => import('./components/tools/HexConverter'));
 const SlugGenerator = lazy(() => import('./components/tools/SlugGenerator'));
 const BackslashEscape = lazy(() => import('./components/tools/BackslashEscape'));
 
+// AI Tools
+const AITextSummarizer = lazy(() => import('./components/tools/AITextSummarizer'));
+const AICodeExplainer = lazy(() => import('./components/tools/AICodeExplainer'));
+const AIRegexGenerator = lazy(() => import('./components/tools/AIRegexGenerator'));
+const AIJSONGenerator = lazy(() => import('./components/tools/AIJSONGenerator'));
+const AISQLGenerator = lazy(() => import('./components/tools/AISQLGenerator'));
+const AIWritingAssistant = lazy(() => import('./components/tools/AIWritingAssistant'));
+
 import './index.css';
 
 function App() {
@@ -228,6 +236,38 @@ function App() {
             <Route path="tools/backslash-escape" element={
               <Suspense fallback={<LoadingSpinner />}>
                 <BackslashEscape />
+              </Suspense>
+            } />
+
+            {/* AI Tools Routes */}
+            <Route path="tools/ai-text-summarizer" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <AITextSummarizer />
+              </Suspense>
+            } />
+            <Route path="tools/ai-code-explainer" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <AICodeExplainer />
+              </Suspense>
+            } />
+            <Route path="tools/ai-regex-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <AIRegexGenerator />
+              </Suspense>
+            } />
+            <Route path="tools/ai-json-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <AIJSONGenerator />
+              </Suspense>
+            } />
+            <Route path="tools/ai-sql-generator" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <AISQLGenerator />
+              </Suspense>
+            } />
+            <Route path="tools/ai-writing-assistant" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <AIWritingAssistant />
               </Suspense>
             } />
           </Route>

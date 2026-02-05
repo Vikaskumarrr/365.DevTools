@@ -31,3 +31,11 @@ export { default as JSMinifier } from './JSMinifier';
 export { default as HexConverter } from './HexConverter';
 export { default as SlugGenerator } from './SlugGenerator';
 export { default as BackslashEscape } from './BackslashEscape';
+
+// AI Tools
+export { default as AITextSummarizer } from './AITextSummarizer';
+export { default as AICodeExplainer } from './AICodeExplainer';
+export { default as AIRegexGenerator } from './AIRegexGenerator';
+export { default as AIJSONGenerator } from './AIJSONGenerator';
+export { default as AISQLGenerator } from './AISQLGenerator';
+export { default as AIWritingAssistant } from './AIWritingAssistant';
