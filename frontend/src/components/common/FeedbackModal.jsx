@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiX, FiSend } from 'react-icons/fi';
+import { FiX, FiSend, FiLoader } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 function FeedbackModal({ isOpen, onClose }) {
@@ -9,16 +9,42 @@ function FeedbackModal({ isOpen, onClose }) {
         type: 'suggestion',
         message: '',
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        if (!formData.message.trim()) {
+            toast.error('Please enter a message');
+            return;
+        }
 
-        // Here you would send the feedback to your backend
-        console.log('Feedback submitted:', formData);
+        setIsSubmitting(true);
 
-        toast.success('Thank you for your feedback!');
-        setFormData({ name: '', email: '', type: 'suggestion', message: '' });
-        onClose();
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/feedback`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                toast.success('Thank you for your feedback!');
+                setFormData({ name: '', email: '', type: 'suggestion', message: '' });
+                onClose();
+            } else {
+                toast.error(data.error || 'Failed to submit feedback');
+            }
+        } catch (error) {
+            console.error('Feedback submission error:', error);
+            toast.error('Failed to submit feedback. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (!isOpen) return null;
@@ -37,6 +63,7 @@ function FeedbackModal({ isOpen, onClose }) {
                     <button
                         onClick={onClose}
                         className="text-gray-400 hover:text-white transition-colors"
+                        disabled={isSubmitting}
                     >
                         <FiX size={24} />
                     </button>
@@ -53,7 +80,8 @@ function FeedbackModal({ isOpen, onClose }) {
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="Your name"
-                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                            disabled={isSubmitting}
+                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:opacity-50"
                         />
                     </div>
 
@@ -66,7 +94,8 @@ function FeedbackModal({ isOpen, onClose }) {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="your@email.com"
-                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                            disabled={isSubmitting}
+                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:opacity-50"
                         />
                     </div>
 
@@ -77,7 +106,8 @@ function FeedbackModal({ isOpen, onClose }) {
                         <select
                             value={formData.type}
                             onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                            disabled={isSubmitting}
+                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:opacity-50"
                         >
                             <option value="suggestion">💡 Suggestion</option>
                             <option value="bug">🐛 Bug Report</option>
@@ -96,16 +126,27 @@ function FeedbackModal({ isOpen, onClose }) {
                             placeholder="Tell us what you think..."
                             required
                             rows={4}
-                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+                            disabled={isSubmitting}
+                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none disabled:opacity-50"
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-lg transition-colors flex items-center justify-center space-x-2"
+                        disabled={isSubmitting}
+                        className="w-full py-3 bg-primary-500 hover:bg-primary-600 disabled:bg-primary-500/50 text-white font-bold rounded-lg transition-colors flex items-center justify-center space-x-2"
                     >
-                        <FiSend size={18} />
-                        <span>Send Feedback</span>
+                        {isSubmitting ? (
+                            <>
+                                <FiLoader className="animate-spin" size={18} />
+                                <span>Sending...</span>
+                            </>
+                        ) : (
+                            <>
+                                <FiSend size={18} />
+                                <span>Send Feedback</span>
+                            </>
+                        )}
                     </button>
 
                     <p className="text-xs text-gray-500 text-center">

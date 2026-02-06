@@ -11,14 +11,11 @@ function ToolCard({ tool, onClick }) {
         >
             <GlareHover
                 glareColor="#EF6E76"
-                glareOpacity={0.15}
-                glareAngle={-30}
-                glareSize={250}
-                transitionDuration={600}
-                playOnce={false}
+                glareOpacity={0.4}
+                transitionDuration={300}
             >
                 <article 
-                    className="group h-full p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-500/10"
+                    className="group h-full p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-500/10 relative z-10 hover:z-20"
                     aria-labelledby={`tool-${tool.id}-title`}
                     aria-describedby={`tool-${tool.id}-desc`}
                 >
@@ -29,15 +26,22 @@ function ToolCard({ tool, onClick }) {
                         >
                             {tool.icon}
                         </div>
-                        {tool.popular && (
-                            <span 
-                                className="flex items-center space-x-1 text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:scale-105 transition-transform duration-300"
-                                aria-label="Popular tool"
-                            >
-                                <FiStar size={12} aria-hidden="true" />
-                                <span>Popular</span>
-                            </span>
-                        )}
+                        <div className="flex items-center gap-2">
+                            {tool.requiresApiKey && (
+                                <span className="flex items-center space-x-1 text-xs font-semibold px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                                    <span>🔑 API</span>
+                                </span>
+                            )}
+                            {tool.popular && (
+                                <span 
+                                    className="flex items-center space-x-1 text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:scale-105 transition-transform duration-300"
+                                    aria-label="Popular tool"
+                                >
+                                    <FiStar size={12} aria-hidden="true" />
+                                    <span>Popular</span>
+                                </span>
+                            )}
+                        </div>
                     </div>
                     <h3 
                         id={`tool-${tool.id}-title`}

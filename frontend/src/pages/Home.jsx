@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FiSearch, FiZap, FiLock, FiUsers, FiStar } from 'react-icons/fi';
+import { FiZap, FiLock, FiUsers, FiStar } from 'react-icons/fi';
 import { toolsList, getPopularTools, CATEGORIES } from '../utils/toolsList';
 import BlurText from '../components/effects/BlurText';
 import Particles from '../components/effects/Particles';
@@ -10,8 +10,21 @@ import GlareHover from '../components/effects/GlareHover';
 function Home() {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState(CATEGORIES.ALL);
-    const [filteredTools, setFilteredTools] = useState(toolsList);
+    const [filteredTools, setFilteredTools] = useState([]);
     const [recentlyUsed, setRecentlyUsed] = useState([]);
+
+    // Sort tools to show AI tools first, then by popularity
+    const sortedToolsList = useMemo(() => {
+        return [...toolsList].sort((a, b) => {
+            // AI tools first
+            if (a.category === CATEGORIES.AI && b.category !== CATEGORIES.AI) return -1;
+            if (a.category !== CATEGORIES.AI && b.category === CATEGORIES.AI) return 1;
+            // Then by popularity
+            if (a.popular && !b.popular) return -1;
+            if (!a.popular && b.popular) return 1;
+            return 0;
+        });
+    }, []);
 
     useEffect(() => {
         // Load recently used tools from localStorage
@@ -20,7 +33,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        let tools = toolsList;
+        let tools = sortedToolsList;
 
         // Filter by category
         if (selectedCategory !== CATEGORIES.ALL) {
@@ -36,9 +49,10 @@ function Home() {
         }
 
         setFilteredTools(tools);
-    }, [searchQuery, selectedCategory]);
+    }, [searchQuery, selectedCategory, sortedToolsList]);
 
     const popularTools = getPopularTools();
+    const totalToolsCount = toolsList.length;
 
     return (
         <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white">
@@ -72,7 +86,7 @@ function Home() {
                     >
                         <FiZap className="text-primary-600" size={16} />
                         <span className="text-sm font-medium text-primary-700 dark:text-primary-400">
-                            33+ Free Tools • Private • No Signup
+                            {totalToolsCount}+ Free Tools • Private • No Signup
                         </span>
                     </motion.div>
 
@@ -161,10 +175,10 @@ function Home() {
                 <section className="px-4 pb-12">
                     <div className="max-w-7xl mx-auto">
                         <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Recently Used</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
                             {recentlyUsed.map((tool) => (
                                 <Link key={tool.id} to={tool.path}>
-                                    <div className="group p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-1 hover:shadow-lg">
+                                    <div className="group p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-2 hover:shadow-lg relative z-10 hover:z-20">
                                         <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
                                         <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
                                             {tool.name}
@@ -208,7 +222,7 @@ function Home() {
                     </div>
 
                     {/* Tools Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
                         {filteredTools.map((tool, index) => (
                             <motion.div
                                 key={tool.id}
@@ -228,21 +242,25 @@ function Home() {
                                 >
                                     <GlareHover
                                         glareColor="#EF6E76"
-                                        glareOpacity={0.15}
-                                        glareAngle={-30}
-                                        glareSize={250}
-                                        transitionDuration={600}
-                                        playOnce={false}
+                                        glareOpacity={0.4}
+                                        transitionDuration={300}
                                     >
-                                        <div className="group h-full p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-500/10">
+                                        <div className="group h-full p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-500/10 relative z-10 hover:z-20">
                                             <div className="flex items-start justify-between mb-4">
                                                 <div className="text-3xl group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
-                                                {tool.popular && (
-                                                    <span className="flex items-center space-x-1 text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:scale-105 transition-transform duration-300">
-                                                        <FiStar size={12} />
-                                                        <span>Popular</span>
-                                                    </span>
-                                                )}
+                                                <div className="flex items-center gap-2">
+                                                    {tool.requiresApiKey && (
+                                                        <span className="flex items-center space-x-1 text-xs font-semibold px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                                                            <span>🔑 API</span>
+                                                        </span>
+                                                    )}
+                                                    {tool.popular && (
+                                                        <span className="flex items-center space-x-1 text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:scale-105 transition-transform duration-300">
+                                                            <FiStar size={12} />
+                                                            <span>Popular</span>
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </div>
                                             <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
                                                 {tool.name}
