@@ -26,10 +26,29 @@ A beautiful, privacy-focused collection of 33+ developer tools that run entirely
 
 ### Installation
 
-1. **Clone the repository**
+1. **Contributors Clone the repository**
 ```bash
-git clone https://github.com/yourusername/365.devTool.git
-cd 365.devTool
+# 1. Fork your repository (they click "Fork" button on GitHub)
+
+# 2. Clone THEIR fork
+git clone https://github.com/their-username/your-repo-name.git
+cd your-repo-name
+
+# 3. Add your repo as upstream (to get updates)
+git remote add upstream https://github.com/your-username/your-repo-name.git
+
+# 4. Create a new branch
+git checkout -b feature/new-feature
+
+# 5. Make changes and commit
+git add .
+git commit -m "Add new feature"
+
+# 6. Push to THEIR fork
+git push origin feature/new-feature
+
+# 7. Go to GitHub and click "Create Pull Request"
+
 ```
 
 2. **Install dependencies**

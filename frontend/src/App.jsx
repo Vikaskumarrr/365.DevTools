@@ -57,6 +57,47 @@ const AIRegexGenerator = lazy(() => import('./components/tools/AIRegexGenerator'
 const AIJSONGenerator = lazy(() => import('./components/tools/AIJSONGenerator'));
 const AISQLGenerator = lazy(() => import('./components/tools/AISQLGenerator'));
 const AIWritingAssistant = lazy(() => import('./components/tools/AIWritingAssistant'));
+// New Tools - Developer
+const XMLFormatter = lazy(() => import('./components/tools/XMLFormatter'));
+const YAMLValidator = lazy(() => import('./components/tools/YAMLValidator'));
+const HTMLFormatter = lazy(() => import('./components/tools/HTMLFormatter'));
+const JSONToXML = lazy(() => import('./components/tools/JSONToXML'));
+const XMLToJSON = lazy(() => import('./components/tools/XMLToJSON'));
+const CronExpression = lazy(() => import('./components/tools/CronExpression'));
+const APITester = lazy(() => import('./components/tools/APITester'));
+const JSONDiff = lazy(() => import('./components/tools/JSONDiff'));
+
+// New Tools - Security
+const BcryptGenerator = lazy(() => import('./components/tools/BcryptGenerator'));
+const HMACGenerator = lazy(() => import('./components/tools/HMACGenerator'));
+const RSAKeyGenerator = lazy(() => import('./components/tools/RSAKeyGenerator'));
+
+// New Tools - Design
+const ColorPalette = lazy(() => import('./components/tools/ColorPalette'));
+const ContrastChecker = lazy(() => import('./components/tools/ContrastChecker'));
+const SVGOptimizer = lazy(() => import('./components/tools/SVGOptimizer'));
+const CSSMinifier = lazy(() => import('./components/tools/CSSMinifier'));
+const BoxShadowGenerator = lazy(() => import('./components/tools/BoxShadowGenerator'));
+
+// New Tools - Content
+const HTMLToMarkdown = lazy(() => import('./components/tools/HTMLToMarkdown'));
+const MarkdownToHTML = lazy(() => import('./components/tools/MarkdownToHTML'));
+const TextToSpeech = lazy(() => import('./components/tools/TextToSpeech'));
+const DuplicateRemover = lazy(() => import('./components/tools/DuplicateRemover'));
+
+// New Tools - Converter
+const RomanNumeral = lazy(() => import('./components/tools/RomanNumeral'));
+const TemperatureConverter = lazy(() => import('./components/tools/TemperatureConverter'));
+const CurrencyConverter = lazy(() => import('./components/tools/CurrencyConverter'));
+const NumberBaseConverter = lazy(() => import('./components/tools/NumberBaseConverter'));
+
+// New Tools - Utility
+const BarcodeGenerator = lazy(() => import('./components/tools/BarcodeGenerator'));
+const IPLookup = lazy(() => import('./components/tools/IPLookup'));
+const UserAgentParser = lazy(() => import('./components/tools/UserAgentParser'));
+const MIMETypeLookup = lazy(() => import('./components/tools/MIMETypeLookup'));
+const EmailValidator = lazy(() => import('./components/tools/EmailValidator'));
+const CreditCardValidator = lazy(() => import('./components/tools/CreditCardValidator'));
 
 import './index.css';
 
