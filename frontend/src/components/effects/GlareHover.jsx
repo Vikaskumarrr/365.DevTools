@@ -4,12 +4,12 @@ function GlareHover({
     children,
     glareColor = '#ffffff',
     glareOpacity = 0.3,
-    glareAngle = -30,
     glareSize = 300,
     transitionDuration = 800,
     playOnce = false,
 }) {
-    const [glareStyle, setGlareStyle] = useState({});
+    const [isHovered, setIsHovered] = useState(false);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [hasPlayed, setHasPlayed] = useState(false);
     const containerRef = useRef(null);
 
@@ -20,24 +20,21 @@ function GlareHover({
         if (!container) return;
 
         const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-        setGlareStyle({
-            background: `radial-gradient(circle ${glareSize}px at ${x}px ${y}px, ${glareColor}, transparent)`,
-            opacity: glareOpacity,
-            transform: `rotate(${glareAngle}deg)`,
-        });
+        setMousePosition({ x, y });
     };
 
     const handleMouseEnter = () => {
+        setIsHovered(true);
         if (playOnce && !hasPlayed) {
             setHasPlayed(true);
         }
     };
 
     const handleMouseLeave = () => {
-        setGlareStyle({});
+        setIsHovered(false);
     };
 
     return (
@@ -48,11 +45,13 @@ function GlareHover({
             onMouseLeave={handleMouseLeave}
             style={{
                 position: 'relative',
-                overflow: 'hidden',
                 cursor: 'pointer',
             }}
         >
-            {/* Glare overlay */}
+            {/* Content */}
+            {children}
+
+            {/* Subtle gradient overlay that follows mouse */}
             <div
                 style={{
                     position: 'absolute',
@@ -61,15 +60,13 @@ function GlareHover({
                     right: 0,
                     bottom: 0,
                     pointerEvents: 'none',
+                    borderRadius: 'inherit',
+                    opacity: isHovered ? glareOpacity : 0,
+                    background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, ${glareColor}40 0%, transparent 50%)`,
                     transition: `opacity ${transitionDuration}ms ease-out`,
-                    ...glareStyle,
+                    zIndex: 10,
                 }}
             />
-
-            {/* Content */}
-            <div style={{ position: 'relative', zIndex: 1 }}>
-                {children}
-            </div>
         </div>
     );
 }
