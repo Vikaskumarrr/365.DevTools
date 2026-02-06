@@ -114,94 +114,94 @@ function App() {
               <Route path="blog" element={<Blog />} />
               <Route path="about" element={<About />} />
 
-            {/* Tools Routes - Wrapped in Suspense for lazy loading */}
-            <Route path="tools/json-formatter" element={<Suspense fallback={<LoadingSpinner />}><JsonFormatter /></Suspense>} />
-            <Route path="tools/password-generator" element={<Suspense fallback={<LoadingSpinner />}><PasswordGenerator /></Suspense>} />
-            <Route path="tools/base64-encoder" element={<Suspense fallback={<LoadingSpinner />}><Base64Encoder /></Suspense>} />
-            <Route path="tools/qr-generator" element={<Suspense fallback={<LoadingSpinner />}><QRCodeGenerator /></Suspense>} />
-            <Route path="tools/hash-generator" element={<Suspense fallback={<LoadingSpinner />}><HashGenerator /></Suspense>} />
-            <Route path="tools/url-encoder" element={<Suspense fallback={<LoadingSpinner />}><URLEncoder /></Suspense>} />
-            <Route path="tools/uuid-generator" element={<Suspense fallback={<LoadingSpinner />}><UUIDGenerator /></Suspense>} />
-            <Route path="tools/timestamp-converter" element={<Suspense fallback={<LoadingSpinner />}><TimestampConverter /></Suspense>} />
-            <Route path="tools/case-converter" element={<Suspense fallback={<LoadingSpinner />}><CaseConverter /></Suspense>} />
-            <Route path="tools/jwt-decoder" element={<Suspense fallback={<LoadingSpinner />}><JWTDecoder /></Suspense>} />
-            <Route path="tools/word-counter" element={<Suspense fallback={<LoadingSpinner />}><WordCounter /></Suspense>} />
-            <Route path="tools/lorem-ipsum" element={<Suspense fallback={<LoadingSpinner />}><LoremIpsum /></Suspense>} />
-            <Route path="tools/color-converter" element={<Suspense fallback={<LoadingSpinner />}><ColorConverter /></Suspense>} />
-            <Route path="tools/markdown-editor" element={<Suspense fallback={<LoadingSpinner />}><MarkdownEditor /></Suspense>} />
-            <Route path="tools/regex-tester" element={<Suspense fallback={<LoadingSpinner />}><RegexTester /></Suspense>} />
-            <Route path="tools/html-entities" element={<Suspense fallback={<LoadingSpinner />}><HTMLEntities /></Suspense>} />
-            <Route path="tools/text-diff" element={<Suspense fallback={<LoadingSpinner />}><TextDiff /></Suspense>} />
-            <Route path="tools/image-to-base64" element={<Suspense fallback={<LoadingSpinner />}><ImageToBase64 /></Suspense>} />
-            <Route path="tools/csv-to-json" element={<Suspense fallback={<LoadingSpinner />}><CSVToJSON /></Suspense>} />
-            <Route path="tools/json-to-csv" element={<Suspense fallback={<LoadingSpinner />}><JSONToCSV /></Suspense>} />
-            <Route path="tools/random-generator" element={<Suspense fallback={<LoadingSpinner />}><RandomGenerator /></Suspense>} />
-            <Route path="tools/binary-converter" element={<Suspense fallback={<LoadingSpinner />}><BinaryConverter /></Suspense>} />
-            <Route path="tools/text-manipulator" element={<Suspense fallback={<LoadingSpinner />}><TextManipulator /></Suspense>} />
-            <Route path="tools/sql-formatter" element={<Suspense fallback={<LoadingSpinner />}><SQLFormatter /></Suspense>} />
-            <Route path="tools/css-formatter" element={<Suspense fallback={<LoadingSpinner />}><CSSFormatter /></Suspense>} />
-            <Route path="tools/unicode-converter" element={<Suspense fallback={<LoadingSpinner />}><UnicodeConverter /></Suspense>} />
-            <Route path="tools/gradient-generator" element={<Suspense fallback={<LoadingSpinner />}><GradientGenerator /></Suspense>} />
-            <Route path="tools/unit-converter" element={<Suspense fallback={<LoadingSpinner />}><UnitConverter /></Suspense>} />
-            <Route path="tools/pomodoro-timer" element={<Suspense fallback={<LoadingSpinner />}><PomodoroTimer /></Suspense>} />
-            <Route path="tools/js-minifier" element={<Suspense fallback={<LoadingSpinner />}><JSMinifier /></Suspense>} />
-            <Route path="tools/hex-converter" element={<Suspense fallback={<LoadingSpinner />}><HexConverter /></Suspense>} />
-            <Route path="tools/slug-generator" element={<Suspense fallback={<LoadingSpinner />}><SlugGenerator /></Suspense>} />
-            <Route path="tools/backslash-escape" element={<Suspense fallback={<LoadingSpinner />}><BackslashEscape /></Suspense>} />
+              {/* Tools Routes - Wrapped in Suspense for lazy loading */}
+              <Route path="tools/json-formatter" element={<Suspense fallback={<LoadingSpinner />}><JsonFormatter /></Suspense>} />
+              <Route path="tools/password-generator" element={<Suspense fallback={<LoadingSpinner />}><PasswordGenerator /></Suspense>} />
+              <Route path="tools/base64-encoder" element={<Suspense fallback={<LoadingSpinner />}><Base64Encoder /></Suspense>} />
+              <Route path="tools/qr-generator" element={<Suspense fallback={<LoadingSpinner />}><QRCodeGenerator /></Suspense>} />
+              <Route path="tools/hash-generator" element={<Suspense fallback={<LoadingSpinner />}><HashGenerator /></Suspense>} />
+              <Route path="tools/url-encoder" element={<Suspense fallback={<LoadingSpinner />}><URLEncoder /></Suspense>} />
+              <Route path="tools/uuid-generator" element={<Suspense fallback={<LoadingSpinner />}><UUIDGenerator /></Suspense>} />
+              <Route path="tools/timestamp-converter" element={<Suspense fallback={<LoadingSpinner />}><TimestampConverter /></Suspense>} />
+              <Route path="tools/case-converter" element={<Suspense fallback={<LoadingSpinner />}><CaseConverter /></Suspense>} />
+              <Route path="tools/jwt-decoder" element={<Suspense fallback={<LoadingSpinner />}><JWTDecoder /></Suspense>} />
+              <Route path="tools/word-counter" element={<Suspense fallback={<LoadingSpinner />}><WordCounter /></Suspense>} />
+              <Route path="tools/lorem-ipsum" element={<Suspense fallback={<LoadingSpinner />}><LoremIpsum /></Suspense>} />
+              <Route path="tools/color-converter" element={<Suspense fallback={<LoadingSpinner />}><ColorConverter /></Suspense>} />
+              <Route path="tools/markdown-editor" element={<Suspense fallback={<LoadingSpinner />}><MarkdownEditor /></Suspense>} />
+              <Route path="tools/regex-tester" element={<Suspense fallback={<LoadingSpinner />}><RegexTester /></Suspense>} />
+              <Route path="tools/html-entities" element={<Suspense fallback={<LoadingSpinner />}><HTMLEntities /></Suspense>} />
+              <Route path="tools/text-diff" element={<Suspense fallback={<LoadingSpinner />}><TextDiff /></Suspense>} />
+              <Route path="tools/image-to-base64" element={<Suspense fallback={<LoadingSpinner />}><ImageToBase64 /></Suspense>} />
+              <Route path="tools/csv-to-json" element={<Suspense fallback={<LoadingSpinner />}><CSVToJSON /></Suspense>} />
+              <Route path="tools/json-to-csv" element={<Suspense fallback={<LoadingSpinner />}><JSONToCSV /></Suspense>} />
+              <Route path="tools/random-generator" element={<Suspense fallback={<LoadingSpinner />}><RandomGenerator /></Suspense>} />
+              <Route path="tools/binary-converter" element={<Suspense fallback={<LoadingSpinner />}><BinaryConverter /></Suspense>} />
+              <Route path="tools/text-manipulator" element={<Suspense fallback={<LoadingSpinner />}><TextManipulator /></Suspense>} />
+              <Route path="tools/sql-formatter" element={<Suspense fallback={<LoadingSpinner />}><SQLFormatter /></Suspense>} />
+              <Route path="tools/css-formatter" element={<Suspense fallback={<LoadingSpinner />}><CSSFormatter /></Suspense>} />
+              <Route path="tools/unicode-converter" element={<Suspense fallback={<LoadingSpinner />}><UnicodeConverter /></Suspense>} />
+              <Route path="tools/gradient-generator" element={<Suspense fallback={<LoadingSpinner />}><GradientGenerator /></Suspense>} />
+              <Route path="tools/unit-converter" element={<Suspense fallback={<LoadingSpinner />}><UnitConverter /></Suspense>} />
+              <Route path="tools/pomodoro-timer" element={<Suspense fallback={<LoadingSpinner />}><PomodoroTimer /></Suspense>} />
+              <Route path="tools/js-minifier" element={<Suspense fallback={<LoadingSpinner />}><JSMinifier /></Suspense>} />
+              <Route path="tools/hex-converter" element={<Suspense fallback={<LoadingSpinner />}><HexConverter /></Suspense>} />
+              <Route path="tools/slug-generator" element={<Suspense fallback={<LoadingSpinner />}><SlugGenerator /></Suspense>} />
+              <Route path="tools/backslash-escape" element={<Suspense fallback={<LoadingSpinner />}><BackslashEscape /></Suspense>} />
 
-            {/* AI Tools Routes */}
-            <Route path="tools/ai-text-summarizer" element={<Suspense fallback={<LoadingSpinner />}><AITextSummarizer /></Suspense>} />
-            <Route path="tools/ai-code-explainer" element={<Suspense fallback={<LoadingSpinner />}><AICodeExplainer /></Suspense>} />
-            <Route path="tools/ai-regex-generator" element={<Suspense fallback={<LoadingSpinner />}><AIRegexGenerator /></Suspense>} />
-            <Route path="tools/ai-json-generator" element={<Suspense fallback={<LoadingSpinner />}><AIJSONGenerator /></Suspense>} />
-            <Route path="tools/ai-sql-generator" element={<Suspense fallback={<LoadingSpinner />}><AISQLGenerator /></Suspense>} />
-            <Route path="tools/ai-writing-assistant" element={<Suspense fallback={<LoadingSpinner />}><AIWritingAssistant /></Suspense>} />
+              {/* AI Tools Routes */}
+              <Route path="tools/ai-text-summarizer" element={<Suspense fallback={<LoadingSpinner />}><AITextSummarizer /></Suspense>} />
+              <Route path="tools/ai-code-explainer" element={<Suspense fallback={<LoadingSpinner />}><AICodeExplainer /></Suspense>} />
+              <Route path="tools/ai-regex-generator" element={<Suspense fallback={<LoadingSpinner />}><AIRegexGenerator /></Suspense>} />
+              <Route path="tools/ai-json-generator" element={<Suspense fallback={<LoadingSpinner />}><AIJSONGenerator /></Suspense>} />
+              <Route path="tools/ai-sql-generator" element={<Suspense fallback={<LoadingSpinner />}><AISQLGenerator /></Suspense>} />
+              <Route path="tools/ai-writing-assistant" element={<Suspense fallback={<LoadingSpinner />}><AIWritingAssistant /></Suspense>} />
 
-            {/* New Tools - Developer */}
-            <Route path="tools/xml-formatter" element={<Suspense fallback={<LoadingSpinner />}><XMLFormatter /></Suspense>} />
-            <Route path="tools/yaml-validator" element={<Suspense fallback={<LoadingSpinner />}><YAMLValidator /></Suspense>} />
-            <Route path="tools/html-formatter" element={<Suspense fallback={<LoadingSpinner />}><HTMLFormatter /></Suspense>} />
-            <Route path="tools/json-to-xml" element={<Suspense fallback={<LoadingSpinner />}><JSONToXML /></Suspense>} />
-            <Route path="tools/xml-to-json" element={<Suspense fallback={<LoadingSpinner />}><XMLToJSON /></Suspense>} />
-            <Route path="tools/cron-expression" element={<Suspense fallback={<LoadingSpinner />}><CronExpression /></Suspense>} />
-            <Route path="tools/api-tester" element={<Suspense fallback={<LoadingSpinner />}><APITester /></Suspense>} />
-            <Route path="tools/json-diff" element={<Suspense fallback={<LoadingSpinner />}><JSONDiff /></Suspense>} />
+              {/* New Tools - Developer */}
+              <Route path="tools/xml-formatter" element={<Suspense fallback={<LoadingSpinner />}><XMLFormatter /></Suspense>} />
+              <Route path="tools/yaml-validator" element={<Suspense fallback={<LoadingSpinner />}><YAMLValidator /></Suspense>} />
+              <Route path="tools/html-formatter" element={<Suspense fallback={<LoadingSpinner />}><HTMLFormatter /></Suspense>} />
+              <Route path="tools/json-to-xml" element={<Suspense fallback={<LoadingSpinner />}><JSONToXML /></Suspense>} />
+              <Route path="tools/xml-to-json" element={<Suspense fallback={<LoadingSpinner />}><XMLToJSON /></Suspense>} />
+              <Route path="tools/cron-expression" element={<Suspense fallback={<LoadingSpinner />}><CronExpression /></Suspense>} />
+              <Route path="tools/api-tester" element={<Suspense fallback={<LoadingSpinner />}><APITester /></Suspense>} />
+              <Route path="tools/json-diff" element={<Suspense fallback={<LoadingSpinner />}><JSONDiff /></Suspense>} />
 
-            {/* New Tools - Security */}
-            <Route path="tools/bcrypt-generator" element={<Suspense fallback={<LoadingSpinner />}><BcryptGenerator /></Suspense>} />
-            <Route path="tools/hmac-generator" element={<Suspense fallback={<LoadingSpinner />}><HMACGenerator /></Suspense>} />
-            <Route path="tools/rsa-key-generator" element={<Suspense fallback={<LoadingSpinner />}><RSAKeyGenerator /></Suspense>} />
+              {/* New Tools - Security */}
+              <Route path="tools/bcrypt-generator" element={<Suspense fallback={<LoadingSpinner />}><BcryptGenerator /></Suspense>} />
+              <Route path="tools/hmac-generator" element={<Suspense fallback={<LoadingSpinner />}><HMACGenerator /></Suspense>} />
+              <Route path="tools/rsa-key-generator" element={<Suspense fallback={<LoadingSpinner />}><RSAKeyGenerator /></Suspense>} />
 
-            {/* New Tools - Design */}
-            <Route path="tools/color-palette" element={<Suspense fallback={<LoadingSpinner />}><ColorPalette /></Suspense>} />
-            <Route path="tools/contrast-checker" element={<Suspense fallback={<LoadingSpinner />}><ContrastChecker /></Suspense>} />
-            <Route path="tools/svg-optimizer" element={<Suspense fallback={<LoadingSpinner />}><SVGOptimizer /></Suspense>} />
-            <Route path="tools/css-minifier" element={<Suspense fallback={<LoadingSpinner />}><CSSMinifier /></Suspense>} />
-            <Route path="tools/box-shadow-generator" element={<Suspense fallback={<LoadingSpinner />}><BoxShadowGenerator /></Suspense>} />
+              {/* New Tools - Design */}
+              <Route path="tools/color-palette" element={<Suspense fallback={<LoadingSpinner />}><ColorPalette /></Suspense>} />
+              <Route path="tools/contrast-checker" element={<Suspense fallback={<LoadingSpinner />}><ContrastChecker /></Suspense>} />
+              <Route path="tools/svg-optimizer" element={<Suspense fallback={<LoadingSpinner />}><SVGOptimizer /></Suspense>} />
+              <Route path="tools/css-minifier" element={<Suspense fallback={<LoadingSpinner />}><CSSMinifier /></Suspense>} />
+              <Route path="tools/box-shadow-generator" element={<Suspense fallback={<LoadingSpinner />}><BoxShadowGenerator /></Suspense>} />
 
-            {/* New Tools - Content */}
-            <Route path="tools/html-to-markdown" element={<Suspense fallback={<LoadingSpinner />}><HTMLToMarkdown /></Suspense>} />
-            <Route path="tools/markdown-to-html" element={<Suspense fallback={<LoadingSpinner />}><MarkdownToHTML /></Suspense>} />
-            <Route path="tools/text-to-speech" element={<Suspense fallback={<LoadingSpinner />}><TextToSpeech /></Suspense>} />
-            <Route path="tools/duplicate-remover" element={<Suspense fallback={<LoadingSpinner />}><DuplicateRemover /></Suspense>} />
+              {/* New Tools - Content */}
+              <Route path="tools/html-to-markdown" element={<Suspense fallback={<LoadingSpinner />}><HTMLToMarkdown /></Suspense>} />
+              <Route path="tools/markdown-to-html" element={<Suspense fallback={<LoadingSpinner />}><MarkdownToHTML /></Suspense>} />
+              <Route path="tools/text-to-speech" element={<Suspense fallback={<LoadingSpinner />}><TextToSpeech /></Suspense>} />
+              <Route path="tools/duplicate-remover" element={<Suspense fallback={<LoadingSpinner />}><DuplicateRemover /></Suspense>} />
 
-            {/* New Tools - Converter */}
-            <Route path="tools/roman-numeral" element={<Suspense fallback={<LoadingSpinner />}><RomanNumeral /></Suspense>} />
-            <Route path="tools/temperature-converter" element={<Suspense fallback={<LoadingSpinner />}><TemperatureConverter /></Suspense>} />
-            <Route path="tools/currency-converter" element={<Suspense fallback={<LoadingSpinner />}><CurrencyConverter /></Suspense>} />
-            <Route path="tools/number-base-converter" element={<Suspense fallback={<LoadingSpinner />}><NumberBaseConverter /></Suspense>} />
+              {/* New Tools - Converter */}
+              <Route path="tools/roman-numeral" element={<Suspense fallback={<LoadingSpinner />}><RomanNumeral /></Suspense>} />
+              <Route path="tools/temperature-converter" element={<Suspense fallback={<LoadingSpinner />}><TemperatureConverter /></Suspense>} />
+              <Route path="tools/currency-converter" element={<Suspense fallback={<LoadingSpinner />}><CurrencyConverter /></Suspense>} />
+              <Route path="tools/number-base-converter" element={<Suspense fallback={<LoadingSpinner />}><NumberBaseConverter /></Suspense>} />
 
-            {/* New Tools - Utility */}
-            <Route path="tools/barcode-generator" element={<Suspense fallback={<LoadingSpinner />}><BarcodeGenerator /></Suspense>} />
-            <Route path="tools/ip-lookup" element={<Suspense fallback={<LoadingSpinner />}><IPLookup /></Suspense>} />
-            <Route path="tools/user-agent-parser" element={<Suspense fallback={<LoadingSpinner />}><UserAgentParser /></Suspense>} />
-            <Route path="tools/mime-type-lookup" element={<Suspense fallback={<LoadingSpinner />}><MIMETypeLookup /></Suspense>} />
-            <Route path="tools/email-validator" element={<Suspense fallback={<LoadingSpinner />}><EmailValidator /></Suspense>} />
-            <Route path="tools/credit-card-validator" element={<Suspense fallback={<LoadingSpinner />}><CreditCardValidator /></Suspense>} />
-          </Route>
-        </Routes>
-      </Router>
-    </ThemeProvider>
+              {/* New Tools - Utility */}
+              <Route path="tools/barcode-generator" element={<Suspense fallback={<LoadingSpinner />}><BarcodeGenerator /></Suspense>} />
+              <Route path="tools/ip-lookup" element={<Suspense fallback={<LoadingSpinner />}><IPLookup /></Suspense>} />
+              <Route path="tools/user-agent-parser" element={<Suspense fallback={<LoadingSpinner />}><UserAgentParser /></Suspense>} />
+              <Route path="tools/mime-type-lookup" element={<Suspense fallback={<LoadingSpinner />}><MIMETypeLookup /></Suspense>} />
+              <Route path="tools/email-validator" element={<Suspense fallback={<LoadingSpinner />}><EmailValidator /></Suspense>} />
+              <Route path="tools/credit-card-validator" element={<Suspense fallback={<LoadingSpinner />}><CreditCardValidator /></Suspense>} />
+            </Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }
