@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FiSearch, FiZap, FiLock, FiUsers, FiStar } from 'react-icons/fi';
+import { FiZap, FiLock, FiUsers, FiStar } from 'react-icons/fi';
 import { toolsList, getPopularTools, CATEGORIES } from '../utils/toolsList';
 import BlurText from '../components/effects/BlurText';
 import Particles from '../components/effects/Particles';
@@ -175,10 +175,10 @@ function Home() {
                 <section className="px-4 pb-12">
                     <div className="max-w-7xl mx-auto">
                         <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Recently Used</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
                             {recentlyUsed.map((tool) => (
                                 <Link key={tool.id} to={tool.path}>
-                                    <div className="group p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-1 hover:shadow-lg mb-2">
+                                    <div className="group p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-2 hover:shadow-lg relative z-10 hover:z-20">
                                         <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
                                         <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
                                             {tool.name}
@@ -222,14 +222,13 @@ function Home() {
                     </div>
 
                     {/* Tools Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
                         {filteredTools.map((tool, index) => (
                             <motion.div
                                 key={tool.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                                className="pb-2"
                             >
                                 <Link
                                     to={tool.path}
@@ -243,13 +242,10 @@ function Home() {
                                 >
                                     <GlareHover
                                         glareColor="#EF6E76"
-                                        glareOpacity={0.15}
-                                        glareAngle={-30}
-                                        glareSize={250}
-                                        transitionDuration={600}
-                                        playOnce={false}
+                                        glareOpacity={0.4}
+                                        transitionDuration={300}
                                     >
-                                        <div className="group h-full p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-500/10">
+                                        <div className="group h-full p-6 bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary-500 dark:hover:border-primary-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-500/10 relative z-10 hover:z-20">
                                             <div className="flex items-start justify-between mb-4">
                                                 <div className="text-3xl group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
                                                 <div className="flex items-center gap-2">
